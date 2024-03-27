@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-neutral-800 text-neutral-100;
+}
+
+::-webkit-scrollbar {
+	@apply hidden;
+}
+
+.transition-colors {
+	transition: all 0.8s ease;
+}
