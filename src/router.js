@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
     if (titleFromParams) meta = useAlbumData(titleFromParams);
     if (titleFromParams) {
 
-        document.title = `${titleFromParams}`;
+        document.title = `NoteFest - ${titleFromParams}`;
         const ogImage = meta ? meta.image.replace("/public", "") : null;
         if (ogImage) {
             const existingMetaTag = document.querySelector('meta[property="og:image"]');
@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
 
 
     }
-    else document.title = "BlueSpot";
+    else document.title = "NoteFest";
 
     next()
 })
