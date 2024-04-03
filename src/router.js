@@ -3,7 +3,7 @@ import { useAlbumData } from "./Composables/useAlbumData";
 
 import index from "./pages/home/index.vue";
 import album from "./pages/album/index.vue";
-import zoeken from "./pages/zoeken/index.vue";
+import songs from "./pages/songs/index.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,9 +19,9 @@ const router = createRouter({
             component: album,
         },
         {
-            path: "/zoeken",
-            name: "zoeken",
-            component: zoeken,
+            path: "/songs",
+            name: "songs",
+            component: songs,
         },
     ],
 });
@@ -41,21 +41,21 @@ router.beforeEach((to, from, next) => {
             const existingAppleTouchIconLink = document.querySelector('link[rel="apple-touch-icon"]');
 
             if (existingMetaTag) {
-            existingMetaTag.setAttribute("content", ogImage);
+                existingMetaTag.setAttribute("content", ogImage);
             } else {
-            const metaTag = document.createElement("meta");
-            metaTag.setAttribute("property", "og:image");
-            metaTag.setAttribute("content", ogImage);
-            document.head.appendChild(metaTag);
+                const metaTag = document.createElement("meta");
+                metaTag.setAttribute("property", "og:image");
+                metaTag.setAttribute("content", ogImage);
+                document.head.appendChild(metaTag);
             }
 
             if (existingAppleTouchIconLink) {
-            existingAppleTouchIconLink.setAttribute("href", ogImage);
+                existingAppleTouchIconLink.setAttribute("href", ogImage);
             } else {
-            const appleTouchIconLink = document.createElement("link");
-            appleTouchIconLink.setAttribute("rel", "apple-touch-icon");
-            appleTouchIconLink.setAttribute("href", ogImage);
-            document.head.appendChild(appleTouchIconLink);
+                const appleTouchIconLink = document.createElement("link");
+                appleTouchIconLink.setAttribute("rel", "apple-touch-icon");
+                appleTouchIconLink.setAttribute("href", ogImage);
+                document.head.appendChild(appleTouchIconLink);
             }
         }
 

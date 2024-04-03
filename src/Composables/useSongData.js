@@ -69,8 +69,8 @@ export const useSongData = (songByAlbum, songByArtist, songByTitle) => {
 	];
 
 	if (songByAlbum) return songData.filter((song) => song.albumId === songByAlbum);
-	if (songByArtist) return songData.filter((song) => song.artist == songByArtist)
-	if (songByTitle) return songData.filter((song) => song.title.includes(songByTitle));
+	if (songByArtist) return songData.filter((song) => song.artist.toLowerCase() == songByArtist.toLowerCase())
+	if (songByTitle) return songData.filter((song) => song.title.toLowerCase().includes(songByTitle.toLowerCase()));
 
 	return songData;
 };

@@ -6,7 +6,7 @@ import highNoMoreJPG from "/album/high-no-more-hajaj.jpg";
 import desireJPG from "/album/desire-warhaus.jpg";
 import whiskeyJPG from "/album/whiskey-tejon-street-corner-thieves.jpg";
 
-export const useAlbumData = (albumByTitle) => {
+export const useAlbumData = (albumByTitle, albumById) => {
 	const albumData = [
 		{
 			id: 1,
@@ -53,5 +53,6 @@ export const useAlbumData = (albumByTitle) => {
 	];
 
 	if (albumByTitle) return albumData.find((album) => album.title === albumByTitle);
+	if (albumById) return albumData.find((album) => album.id === albumById);
 	return albumData;
 };
