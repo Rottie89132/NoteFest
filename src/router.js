@@ -3,6 +3,7 @@ import { useAlbumData } from "./Composables/useAlbumData";
 
 import index from "./pages/home/index.vue";
 import album from "./pages/album/index.vue";
+import zoeken from "./pages/zoeken/index.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,6 +17,11 @@ const router = createRouter({
             path: "/album",
             name: "album",
             component: album,
+        },
+        {
+            path: "/zoeken",
+            name: "zoeken",
+            component: zoeken,
         },
     ],
 });

@@ -1,7 +1,6 @@
 <template>
 	<div v-if="!delayload">
-		<div :class="currentState != 'start' ? ' mb-16' : ''"
-			class="grid grid-rows-2 grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2 overflow-auto">
+		<div :class="currentState != 'start' ? ' mb-16' : ''" class="grid mt-14 grid-rows-2 grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2 overflow-auto">
 			<div v-for="(album, index) in albums">
 				<albumCard :album="album" :loading="loading" :key="album.title" />
 			</div>
@@ -33,5 +32,5 @@
 		setTimeout(() => {
 			loading.value = false;
 		}, 500);
-	}, 350);
+	}, 450);
 </script>

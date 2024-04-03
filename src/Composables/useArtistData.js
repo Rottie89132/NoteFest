@@ -1,10 +1,10 @@
-import theBlueStones from "../../public/artist/the-blue-stones.png";
-import stevieWonder from "../../public/artist/stevie-wonder.png";
-import chetFaker from "../../public/artist/chet-faker.png";
-import quakerCityNightHawks from "../../public/artist/quaker-city-night-hawks.png";
-import hajaj from "../../public/artist/hajaj.png";
-import warhaus from "../../public/artist/warhaus.png";
-import tejonStreetCornerThieves from "../../public/artist/tejon-street-corner-thieves.png";
+import theBlueStones from "/artist/the-blue-stones.png";
+import stevieWonder from "/artist/stevie-wonder.png";
+import chetFaker from "/artist/chet-faker.png";
+import quakerCityNightHawks from "/artist/quaker-city-night-hawks.png";
+import hajaj from "/artist/hajaj.png";
+import warhaus from "/artist/warhaus.png";
+import tejonStreetCornerThieves from "/artist/tejon-street-corner-thieves.png";
 
 export const useArtistData = (artistByTitle) => {
 	const artistData = [

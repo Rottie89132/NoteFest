@@ -1,20 +1,20 @@
-import oceansJPG from "../../public/album/oceans-the-blue-stones.jpg";
-import masterBlasterJPG from "../../public/album/master-blaster-stevie-wonder.jpg";
-import noDiggityJPG from "../../public/album/no-diggity-chet-faker.jpg";
-import suitInTheBackJPG from "../../public/album/suit-in-the-back-quaker-city-night-hawks.jpg";
-import highNoMoreJPG from "../../public/album/high-no-more-hajaj.jpg";
-import desireJPG from "../../public/album/desire-warhaus.jpg";
-import whiskeyJPG from "../../public/album/whiskey-tejon-street-corner-thieves.jpg";
+import oceansJPG from "/album/oceans-the-blue-stones.jpg";
+import masterBlasterJPG from "/album/master-blaster-stevie-wonder.jpg";
+import noDiggityJPG from "/album/no-diggity-chet-faker.jpg";
+import suitInTheBackJPG from "/album/suit-in-the-back-quaker-city-night-hawks.jpg";
+import highNoMoreJPG from "/album/high-no-more-hajaj.jpg";
+import desireJPG from "/album/desire-warhaus.jpg";
+import whiskeyJPG from "/album/whiskey-tejon-street-corner-thieves.jpg";
 
-import oceansMP3 from "../../public/songs/oceans-the-blue-stones.mp3";
-import masterBlasterMP3 from "../../public/songs/stevie-wonder-master-blaster.mp3";
-import noDiggityMP3 from "../../public/songs/no-diggity-chet-faker.mp3";
-import suitInTheBackMP3 from "../../public/songs/suit-in-the-back-quaker-city-night-hawks.mp3";
-import highNoMoreMP3 from "../../public/songs/high-no-more-hajaj.mp3";
-import desireMP3 from "../../public/songs/desire-warhaus.mp3";
-import whiskeyMP3 from "../../public/songs/whiskey-tejon-street-corner-thieves.mp3";
+import oceansMP3 from "/songs/oceans-the-blue-stones.mp3";
+import masterBlasterMP3 from "/songs/stevie-wonder-master-blaster.mp3";
+import noDiggityMP3 from "/songs/no-diggity-chet-faker.mp3";
+import suitInTheBackMP3 from "/songs/suit-in-the-back-quaker-city-night-hawks.mp3";
+import highNoMoreMP3 from "/songs/high-no-more-hajaj.mp3";
+import desireMP3 from "/songs/desire-warhaus.mp3";
+import whiskeyMP3 from "/songs/whiskey-tejon-street-corner-thieves.mp3";
 
-export const useSongData = (songByAlbum, songByArtist) => {
+export const useSongData = (songByAlbum, songByArtist, songByTitle) => {
 
 	const songData = [
 		{
@@ -70,5 +70,7 @@ export const useSongData = (songByAlbum, songByArtist) => {
 
 	if (songByAlbum) return songData.filter((song) => song.albumId === songByAlbum);
 	if (songByArtist) return songData.filter((song) => song.artist == songByArtist)
+	if (songByTitle) return songData.filter((song) => song.title.includes(songByTitle));
+
 	return songData;
 };

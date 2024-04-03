@@ -1,10 +1,10 @@
-import oceansJPG from "../../public/album/oceans-the-blue-stones.jpg";
-import masterBlasterJPG from "../../public/album/master-blaster-stevie-wonder.jpg";
-import noDiggityJPG from "../../public/album/no-diggity-chet-faker.jpg";
-import suitInTheBackJPG from "../../public/album/suit-in-the-back-quaker-city-night-hawks.jpg";
-import highNoMoreJPG from "../../public/album/high-no-more-hajaj.jpg";
-import desireJPG from "../../public/album/desire-warhaus.jpg";
-import whiskeyJPG from "../../public/album/whiskey-tejon-street-corner-thieves.jpg";
+import oceansJPG from "/album/oceans-the-blue-stones.jpg";
+import masterBlasterJPG from "/album/master-blaster-stevie-wonder.jpg";
+import noDiggityJPG from "/album/no-diggity-chet-faker.jpg";
+import suitInTheBackJPG from "/album/suit-in-the-back-quaker-city-night-hawks.jpg";
+import highNoMoreJPG from "/album/high-no-more-hajaj.jpg";
+import desireJPG from "/album/desire-warhaus.jpg";
+import whiskeyJPG from "/album/whiskey-tejon-street-corner-thieves.jpg";
 
 export const useAlbumData = (albumByTitle) => {
 	const albumData = [

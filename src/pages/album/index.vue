@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="!delayload" class="md:flex w-full gap-4 mt-14">
 		<div class="absolute z-30 m-2 bg-neutral-800 border-2 border-neutral-900 rounded-md p-2 flex items-center justify-center">
 			<router-link to="/" class="text-neutral-100 text-lg font-bold">
 				<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
@@ -10,10 +10,10 @@
 		<div class="w-full xs:w-fit h-fit max-w-96 max-h-96 rounded-lg overflow-hidden">
 			<div class="relative rounded-lg border-2 border-neutral-900">
 				<div v-if="!loading">
-					<img :src="songs[0].image" alt="Album" class="w-full h-[21rem] object-cover z-10 rounded-lg" />
+					<img :src="songs[0].image" alt="Album" class="w-full md:w-[21rem] h-[21rem] object-cover z-10 rounded-lg" />
 				</div>
 				<div v-else>
-					<div class="animate-pulse w-full h-[21rem] rounded-lg"></div>
+					<div class="animate-pulse w-full md:w-[21rem] h-[21rem] rounded-lg"></div>
 				</div>
 				<div class="absolute inset-0 z-20 flex items-center justify-center rounded-lg">
 					<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end rounded-lg">
@@ -28,12 +28,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid mt-2 grid-rows-1 gap-2 overflow-auto">
-			<songCard v-for="song in songs" :song="song" :album="album" :key="song.title" />
+		<div class="md:w-[75%]">
+			<div class="grid mt-2 md:mt-0 grid-rows-1 gap-2 overflow-auto">
+				<songCard v-for="song in songs" :song="song" :album="album" :key="song.title" />
+			</div>
 		</div>
-		<!-- <div v-if="!load">
-			<activeAlbum v-if="currentState.albumId != songs[0].albumId" />
-		</div> -->
 	</div>
 </template>
 
@@ -59,12 +58,16 @@
 	const artist = ref(null);
 	const route = useRoute();
 	const loading = ref(true);
+	const delayload = ref(true);
 
 	album.value = useAlbumData(route.query.title);
 	songs.value = useSongData(false, album.value.artist);
 	artist.value = useArtistData(album.value.artist);
 
 	setTimeout(() => {
-		loading.value = false;
-	}, 200);
+		delayload.value = false;
+		setTimeout(() => {
+			loading.value = false;
+		}, 200);
+	}, 500);
 </script>

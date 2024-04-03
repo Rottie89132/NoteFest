@@ -9,6 +9,7 @@
 
 <template>
 	<div>
+		<navigation />
 		<mainContent>
 			<router-view v-slot="{ Component }">
 				<transition name="fade">
