@@ -1,12 +1,5 @@
 <template>
 	<div v-if="!delayload" class="md:flex w-full gap-4 mt-14">
-		<div class="absolute z-30 m-2 bg-neutral-800 border-2 border-neutral-900 rounded-md p-2 flex items-center justify-center">
-			<router-link to="/" class="text-neutral-100 text-lg font-bold">
-				<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-					<path fill="currentColor" d="m9.55 12l7.35 7.35q.375.375.363.875t-.388.875q-.375.375-.875.375t-.875-.375l-7.7-7.675q-.3-.3-.45-.675t-.15-.75q0-.375.15-.75t.45-.675l7.7-7.7q.375-.375.888-.363t.887.388q.375.375.375.875t-.375.875z" />
-				</svg>
-			</router-link>
-		</div>
 		<div class="w-full xs:w-fit h-fit max-w-96 max-h-96 rounded-lg overflow-hidden">
 			<div class="relative rounded-lg border-2 border-neutral-900">
 				<div v-if="!loading">

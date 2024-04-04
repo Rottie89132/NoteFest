@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<Transition name="fade">
-			<div class="mt-14 z-40 -mb-16 bg-neutral-900 px-7 p-3" v-if="toonbalk">
+			<div class="fixed w-full top-0 z-40 mt-14 bg-neutral-900 px-7 p-3" v-if="toonbalk">
 				<form @submit.prevent="Zoeken">
 					<input type="text" v-model="invoer" class="w-full bg-neutral-800 text-neutral-100 p-2 px-3 mt-2 rounded-2xl outline-none appearance-none" placeholder="Zoeken..." />
 				</form>

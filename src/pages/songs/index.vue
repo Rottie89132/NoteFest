@@ -36,7 +36,7 @@
 		delayload.value = true;
 		setTimeout(() => {
 			delayload.value = false;
-		}, 900);
+		}, 700);
 	};
 
 	watch(
