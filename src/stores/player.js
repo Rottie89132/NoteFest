@@ -11,6 +11,7 @@ export const usePlayerStore = defineStore("player", () => {
 	const isState = ref("start");
 	const currentTrack = ref(null);
 	const audio = ref(null);
+	const trackList = ref([]);
 
 	const progres = reactive({
 		currentTime: 0,
@@ -18,8 +19,8 @@ export const usePlayerStore = defineStore("player", () => {
 	});
 
 	const updateTime = (audio) => {
-		progres.currentTime = audio.value.currentTime;
-		progres.duration = audio.value.duration;
+		progres.currentTime = audio.value?.currentTime || 0;
+		progres.duration = audio.value?.duration || 0;
 	};
 
 	const seekTo = (time) => { if (audio.value) audio.value.currentTime = time };
@@ -63,7 +64,18 @@ export const usePlayerStore = defineStore("player", () => {
 		audio.value = new Audio(currentTrack.value.mp3);
 		navigator.mediaSession.playbackState = PLAYING;
 		audio.value.addEventListener("timeupdate", () => updateTime(audio));
-		audio.value.addEventListener("ended", () => stop(audio));
+		audio.value.addEventListener("ended", () => {
+
+			if (trackList.value.length > 1) {
+				let currentIndex = trackList.value.findIndex(track => track.title === currentTrack.value.title);
+				if (currentIndex < 0) currentIndex = 0
+				
+				const nextTrack = trackList.value[currentIndex + 1];
+				if (nextTrack) play(nextTrack);
+				else stop(audio);
+			}
+			else stop(audio);
+		});
 		audio.value.play();
 	};
 
@@ -129,6 +141,7 @@ export const usePlayerStore = defineStore("player", () => {
 		isState,
 		currentTrack,
 		progres,
+		trackList,
 		play,
 		pause,
 		stop,

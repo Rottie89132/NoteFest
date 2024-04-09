@@ -16,6 +16,7 @@
 	import { useRoute } from "vue-router";
 
 	import songCard from "../../components/songCard.vue";
+	import { usePlayerStore } from "../../stores/player";
 
 	const invoer = ref("");
 	const route = useRoute();
@@ -31,6 +32,15 @@
 	albums.value = albumData;
 
 	const getAlbum = computed(() => (albumId) => albums.value.find((album) => album.id === albumId));
+	const player = usePlayerStore();
+	player.trackList = songs.value.map(song => {
+		const album = getAlbum.value(song.albumId);
+		return {
+			...song,
+			artwork: album.image
+		};
+	});
+	
 
 	const loading = () => {
 		delayload.value = true;
@@ -39,14 +49,14 @@
 		}, 700);
 	};
 
-	watch(
-		() => route.query.title,
-		(newTitle) => {
-			invoer.value = newTitle;
-			songData = useSongData(false, false, invoer.value);
-			songs.value = songData;
-			loading();
-		}
+	watch(() => route.query.title, (newTitle) => {
+		invoer.value = newTitle;
+		songData = useSongData(false, false, invoer.value);
+		songs.value = songData;
+		player.trackList = songs.value.map(song => getAlbum.value(song.albumId));
+
+		loading();
+	}
 	);
 
 	loading();

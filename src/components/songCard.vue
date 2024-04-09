@@ -1,5 +1,5 @@
 <template>
-	<div :class="[currentState != 'start' && track && track.albumId == song.albumId ? 'bg-blue-700' : 'bg-neutral-900', currentState == 'paused' || (currentState == 'refresh' && track && track.albumId == song.albumId) ? ' bg-indigo-700' : '']" class="p-3 py-1 rounded-xl transition-colors" @click="currentState == 'playing' && track && track.albumId == song.albumId ? pauseSong() : currentState == 'paused' && track && track.albumId == song.albumId ? resumeSong() : playSong()">
+	<div :class="[currentState != 'start' && track && track.title == song.title ? 'bg-blue-700' : 'bg-neutral-900', currentState == 'paused' || (currentState == 'refresh' && track && track.albumId == song.albumId) ? ' bg-indigo-700' : '']" class="p-3 py-1 rounded-xl transition-colors" @click="currentState == 'playing' && track && track.title == song.title ? pauseSong() : currentState == 'paused' && track && track.title == song.title ? resumeSong() : playSong()">
 		<div class="flex justify-between">
 			<div class="flex gap-4 items-center w-full">
 				<div class="my-2 w-full">
@@ -8,7 +8,9 @@
 				</div>
 			</div>
 		</div>
-		<div v-if="currentState != 'start' && track && track.albumId == song.albumId" class="w-full -mt-2">
+		<div>
+		</div>
+		<div v-if="currentState != 'start' && track && track.title == song.title" class="w-full -mt-2">
 			<div class="flex justify-between gap-2 items-center w-full">
 				<p>{{ formatTime(progress.currentTime) }}</p>
 				<div class="w-full mt-[0.15rem]">

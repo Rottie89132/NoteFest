@@ -33,7 +33,7 @@
 	import { useSongData } from "../../Composables/useSongData";
 	import { useAlbumData } from "../../Composables/useAlbumData";
 	import { useArtistData } from "../../Composables/useArtistData";
-	import { ref, watchEffect } from "vue";
+	import { ref, watchEffect, computed } from "vue";
 	import { useRoute } from "vue-router";
 	import { usePlayerStore } from "../../stores/player.js";
 
@@ -47,15 +47,22 @@
 	});
 
 	const songs = ref([]);
-	const album = ref(null);
-	const artist = ref(null);
+	const album = ref([]);
+	const artist = ref([]);
 	const route = useRoute();
 	const loading = ref(true);
 	const delayload = ref(true);
 
 	album.value = useAlbumData(route.query.title);
-	songs.value = useSongData(false, album.value.artist);
+	songs.value = useSongData(album.value.id, album.value.artist);
 	artist.value = useArtistData(album.value.artist);
+
+	playerStore.trackList = songs.value.map(song => {
+		return {
+			...song,
+			artwork: album.value.image
+		};
+	});
 
 	setTimeout(() => {
 		delayload.value = false;
